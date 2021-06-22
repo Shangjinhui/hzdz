@@ -1,0 +1,26 @@
+<view class="contain">
+  <view class="top">
+    <image class="avatar" mode="scaleToFill" src="{{avatar[index-1]}}"/>
+    <view class="tip">
+      {{title[index-1]}}
+    </view>
+  </view>
+
+  <view class="from">
+    <view class="li flex">
+      <image class="icon" mode="scaleToFill" src="../../assets/images/icon1.png"/>
+      <input placeholder="请输入姓名" value="{{username}}" onInput="putName" />
+    </view>
+    <view class="li flex">
+      <image class="icon" mode="scaleToFill" src="../../assets/images/icon2.png"/>
+      <input placeholder="请输入手机号" value="{{phone}}" onInput="putPhone" />
+    </view>
+  </view>
+
+  <view class="login" onTap="toLogin">
+    登录
+  </view>
+  <view class="desc">
+    姓名、手机号为员工个人隐私信息，请勿泄露给他人
+  </view>
+</view>

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州东站智慧防疫码</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img{display:block;}
+        ul,li{list-style: none;}
+        ::-webkit-scrollbar {
+            width: 4px;   
+            height:4px; 
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 5px #022755;
+            background: #022755;
+        }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 5px #010a27;
+            border-radius: 0;
+            background:#010a27;
+
+        }
+        .ellipsis1{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .flex{
+            display:flex;
+            align-items: center;
+        }
+        .flex-sp{
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .flex-sp-top{
+            display:flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .flex-center{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mb2vh{margin-bottom:2.3vh;}
+        .col018af4{color:#018af4;}
+        .bg06d97e{background-color:#06d97e;}
+        .bgffc200{background-color:#ffc200;}
+        .bgff3939{background-color:#ff3939;}
+
+        #app{
+            width:100vw;
+            /* min-width:1400px; */
+            min-height:100vh;
+            background: #010a27 url('./image/bg.jpg') top center/100% 100% no-repeat;
+            position:relative;
+            display:none;
+        }
+        .h2{
+            width:215px;
+            position:absolute;
+            left:50%;
+            top:17px;
+            transform: translateX(-50%);
+        }
+        .cb-bg{
+            width:1200px;
+            position:absolute;
+            left:50%;
+            bottom:9.4vh;
+            transform: translateX(-50%);
+        }
+        .main{
+            width:100%;
+            min-height:100vh;
+            /* padding:60px 45px; */
+            padding:5.4vh 2.6vw 0;
+            box-sizing: border-box;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        /* 左侧 */
+        .left{
+            /* width:475px; */
+            width:24.7%;
+        }
+        .select-out{
+            width: 100%;
+            height:4.35vh;
+            background:url('./image/select-bg.png') 0 0/100% 100% no-repeat;
+            margin-bottom:0.7vh;
+            position:relative;
+        }
+        .select-out .title{
+            font-size:15px;
+            height:4.35vh;
+            line-height:4.35vh;
+            color:#fff;
+            padding-left: 22px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        .select-out .icon{
+            width:11px;
+            height:5px;
+        }
+        .select-out .options-out{
+            width:100%;
+            background-color: #010a27;
+            border:1px solid #018af4;
+            position:absolute;
+            left:0;
+            top:100%;
+            z-index:9;
+        }
+        .select-out .options-out ul li{
+            width:100%;
+            height:4.94vh;
+            font-size: 15px;
+            color:#fff;
+            padding:0 20px 0 26px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .select-out .options-out ul li:hover{
+            background-color: #03224b;
+        }
+        .block{
+            height:27vh;
+            width:100%;
+            background:url('./image/l-bg.png') 0 0/100% 100% no-repeat;
+        }
+        .block .top{
+            width:100%;
+            height:3.7vh;
+            position: relative;
+        }
+        .block .top p{
+            font-size: 15px;
+            color:#fff;
+            padding:0 20px;
+        }
+        .block .top .l-icon,.block .top .r-icon{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+        }
+        .block .top .l-icon{
+            left:3.8%;
+        }
+        .block .top .r-icon{
+            right:3.8%;
+        }
+
+        .block .scroll{
+            /* width:85.6%; */
+            width:20vw;
+            margin:0 auto;
+            height:18.8vh;
+            /* overflow-x: auto; */
+            overflow: hidden;
+        }
+        .block .scroll ul{
+            height:100%;
+            display:flex;
+            width:max-content;
+            position:relative;
+            left:0;
+            transition: all .3s ease;
+        }
+        .block .scroll ul li{
+            /* width:6.9vw;
+            margin-right:2.9%; */
+            width:6.16vw;
+            margin-right:0.7vw;
+        }
+        .block .scroll ul li img{
+            width:100%;
+        }
+        .block .scroll ul li p{
+            font-size:13px;
+            line-height:18px;
+            height:18px;
+            overflow: hidden;
+            color:rgba(255, 255, 255, .5);
+            text-align: center;
+            margin-top:1vh;
+        }
+
+        /* 中间 */
+        .center{
+            /* width:807px; */
+            /* width:42%; */
+            width:47%;
+            margin-top:20px;
+        }
+        .c-top{
+            width:100%;
+            height:6.23vh;
+            background:url('./image/ct-bg.png') 0 0/100% 100% no-repeat;
+        }
+        .c-top p{
+            font-size: 15px;
+            color:#fff;
+            margin-left:10px;
+        }
+        .c-cen li{
+            width:31.6%;
+            height:13.17vh;
+            background:url('./image/cc-bg.png') 0 0/100% 100% no-repeat;
+            position: relative;
+        }
+        .c-cen li .icon{
+            width: 18.4%;
+            position:absolute;
+            right:9.2%;
+            top:2.82vh;
+        }
+        .c-cen li .num{
+            font-size: 32px;
+            line-height: 1;
+            color:#fff;
+            position:absolute;
+            left:10.4%;
+            top:6.47vh;
+        }
+        .c-cen li .color{
+            font-size: 16px;
+            color:rgba(255, 255, 255, .5);
+            position:absolute;
+            left:10.4%;
+            top:2.82vh;
+        }
+        .c-btm{
+            width: 100%;
+            position: relative;
+        }
+        .c-btm .logo{
+            width:14.2%;
+            position: absolute;
+            left:0;
+            top:3.5vh;
+        }
+        .c-btm .title{
+            width:49.5%;
+            position: absolute;
+            left:50%;
+            transform: translateX(-50%);
+            top:10.6vh;
+        }
+        .c-leiji{
+            margin-top:53.76vh;
+            position:relative;
+        }
+        .c-leiji .time-out{
+            position:absolute;
+            right:0;
+            top:-4.82vh;
+        }
+        .time-out .line{
+            width:10px;
+            height:2px;
+            margin:0 4px;
+            background:#064259;
+        }
+        .time-out .time{
+            width:7.18vw;
+            height:4.82vh;
+            background:url('./image/time-bg.png') 0 0/100% 100% no-repeat;
+            /* margin-left:0.73vw; */
+            padding:0 0.78vw;
+            box-sizing: border-box;
+            font-size: 12px;
+            color:#fff;
+            position: relative;
+        }
+        .time-out .time img{
+            width:11px;
+            height:5px;
+        }
+        .time-out .time #beginTime,.time-out .time #endTime{
+            position: absolute;
+            left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .c-leiji li{
+            width:33%;
+            height:12.11vh;
+            background:url('./image/cc-bg2.png') 0 0/100% 100% no-repeat;
+            padding:2.35vh 1.56vw 0 1.35vw;
+            box-sizing: border-box;
+            border-top:2px solid #018af4;
+        }
+        .c-leiji li .title{
+            font-size: 16px;
+            color: rgba(255, 255, 255, .5);
+        }
+        .c-leiji li .icon{
+            width: 12px;
+            height:12px;
+        }
+        .c-leiji li .total{
+            font-size: 32px;
+            line-height: 1;
+            color:#fff;
+            margin-top:1.3vh;
+        }
+        /* 右侧 */
+        .right{
+            /* width:475px; */
+            width:24.7%;
+        }
+
+        .recode{
+            /* height:56.7vh; */
+            height:61.75vh;
+            background:url('./image/recode-bg.jpg') 0 0/100% 100% no-repeat;
+        }
+        .recode-con{
+            width:93.7%;
+            height:54vh;
+            margin:0 auto;
+            overflow: auto;
+            scroll-behavior: smooth;
+            padding:10px 5.3% 0;
+            box-sizing: border-box;
+        }
+        .recode-con ul li{
+            padding:8px 0 12px;
+            border-bottom:1px solid #1e345a;
+            font-size:15px;
+            color:#fff;
+        }
+        .recode-con .area{
+            padding-left:23px;
+            position: relative;
+        }
+        .recode-con .area:before{
+            content: '';
+            width:14px;
+            height:14px;
+            background:url('./image/success.png') no-repeat;
+            position: absolute;
+            left:0;
+            top:3px;
+        }
+        .recode-con .time{
+            font-size:12px;
+            color:rgba(255, 255, 255, .5);
+            margin-top: 5px;
+        }
+        .recode-con .status{
+            font-size:13px;
+            color:#3cbc64;
+            margin-top: 5px;
+        }
+
+        .mask-out{
+            width:100vw;
+            height:100vh;
+            background:rgba(0,0,0,.3);
+            position:fixed;
+            left:0;
+            top:0;
+            z-index:9;
+        }
+        .mask-inner{
+            width:621px;
+            height:210px;
+            padding-top:96px;
+            box-sizing: border-box;
+            background: url('./image/model.png') no-repeat;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            font-size:28px;
+            color:#fff;
+            text-align: center;
+        }
+        .mask-inner .close{
+            position:absolute;
+            top:37px;
+            right:20px;
+            cursor: pointer;
+        }
+        .nodata{
+            font-size: 14px;
+            color: rgba(255,255,255,.5);
+            text-align: center;
+        }
+        @media screen and (max-width: 1400px){
+            #app{
+                width:1400px;
+            }
+            .block .scroll{
+                width:278px;
+            }
+            .block .scroll ul li{
+                width:86px;
+                margin-right:10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <img class="h2" src="./image/top-title.png" alt="">
+        <img class="cb-bg" src="./image/bg-cb.png" alt="">
+        <div class="main flex-sp-top">
+            <div class="left">
+                <!-- 单位选择 -->
+                <div class="select-out" @click.stop>
+                    <div class="flex" @click="show_cp=true">
+                        <p class="title">{{company[select_cp]?company[select_cp].title:'全部'}}</p>
+                        <img class="icon" :src="show_cp?'./image/top.png':'./image/bottom.png'" alt="">
+                    </div>
+                    <!-- options -->
+                    <div class="options-out" v-if="show_cp">
+                        <ul>
+                            <li class="flex-sp" v-for="(item,index) in company" :key="index" @click="chooseCp(index)">
+                                <span :class="[{'col018af4':select_cp==index}]">{{item.title}}</span>
+                                <img v-if="select_cp==index" src="./image/gou.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 绿 -->
+                <div class="block mb2vh">
+                    <div class="top flex-center mb2vh">
+                        <img class="l-icon" src="./image/left.png" alt="" @click="prev('blueNum',blueList.length)">
+                        <img src="./image/l-icon.png" alt="">
+                        <p class="top-title">绿码区域</p>
+                        <img src="./image/r-icon.png" alt="">
+                        <img class="r-icon" src="./image/right.png" alt="" @click="next('blueNum',blueList.length)">
+                    </div>
+                    <p class="nodata" v-if="blueList.length<=0">暂无绿码区域~</p>
+                    <div class="scroll" v-else>
+                        <ul :style="{left:blueNum*-scroll.len+scroll.unit}">
+                            <li v-for="(item,index) in blueList" :key="index">
+                                <img src="./image/blue.png" alt="" />
+                                <p class="title">{{item.title}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 黄 -->
+                <div class="block mb2vh">
+                    <div class="top flex-center mb2vh">
+                        <img class="l-icon" src="./image/left.png" alt="" @click="prev('yellowNum',yellowList.length)">
+                        <img src="./image/l-icon.png" alt="">
+                        <p class="top-title">黄码区域</p>
+                        <img src="./image/r-icon.png" alt="">
+                        <img class="r-icon" src="./image/right.png" alt="" @click="next('yellowNum',yellowList.length)">
+                    </div>
+                    <p class="nodata" v-if="yellowList.length<=0">暂无黄码区域~</p>
+                    <div class="scroll">
+                        <ul :style="{left:yellowNum*-scroll.len+scroll.unit}">
+                            <li v-for="(item,index) in yellowList" :key="index">
+                                <img src="./image/yellow.png" alt="" />
+                                <p class="title">{{item.title}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 红 -->
+                <div class="block">
+                    <div class="top flex-center mb2vh">
+                        <img class="l-icon" src="./image/left.png" alt="" @click="prev('redNum',redList.length)">
+                        <img src="./image/l-icon.png" alt="">
+                        <p class="top-title">红码区域</p>
+                        <img src="./image/r-icon.png" alt="">
+                        <img class="r-icon" src="./image/right.png" alt="" @click="next('redNum',redList.length)">
+                    </div>
+                    <p class="nodata" v-if="redList.length<=0">暂无红码区域~</p>
+                    <div class="scroll">
+                        <ul :style="{left:redNum*-scroll.len+scroll.unit}">
+                            <li v-for="(item,index) in redList" :key="index">
+                                <img src="./image/red.png" alt="" />
+                                <p class="title">{{item.title}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="center">
+                <div class="c-top flex-center mb2vh">
+                    <img src="./image/notice.png" alt="">
+                    <p>游客数量：{{accountTotal}}人</p>
+                </div>
+                <!-- 码数量 -->
+                <ul class="c-cen flex-sp-top">
+                    <li>
+                        <img class="icon" src="./image/icon1.png" alt="">
+                        <p class="num">{{blueList.length}}</p>
+                        <p class="color">绿码</p>
+                    </li>
+                    <li>
+                        <img class="icon" src="./image/icon2.png" alt="">
+                        <p class="num">{{yellowList.length}}</p>
+                        <p class="color">黄码</p>
+                    </li>
+                    <li>
+                        <img class="icon" src="./image/icon3.png" alt="">
+                        <p class="num">{{redList.length}}</p>
+                        <p class="color">红码</p>
+                    </li>
+                </ul>
+                <div class="c-btm">
+                    <img class="logo" src="./image/logo.png" alt="">
+                    <img class="title" src="./image/title.png" alt="">
+                </div>
+                <!-- 累计数量 -->
+                <div class="c-leiji">
+                    <div class="time-out flex">
+                        <div class="time flex-sp" @click.stop="show_start=true">
+                            <p>{{begin_time||'开始时间'}}</p>
+                            <img :src="show_start?'./image/bottom.png':'./image/top.png'" alt="">
+                            <input type="text" id="beginTime" readonly>
+                        </div>
+                        <span class="line"></span>
+                        <div class="time flex-sp" @click.stop="show_end=true">
+                            <p>{{end_time||'截止时间'}}</p>
+                            <img :src="show_end?'./image/bottom.png':'./image/top.png'" alt="">
+                            <input type="text" id="endTime" readonly>
+                        </div>
+                    </div>
+                    <ul class="flex-sp-top">
+                        <li>
+                            <div class="flex-sp">
+                                <p class="title">累计消杀</p>
+                                <i class="icon bg06d97e"></i>
+                            </div>
+                            <p class="total">{{xsNum.killNumber|Qfw}}</p>
+                        </li>
+                        <li>
+                            <div class="flex-sp">
+                                <p class="title">黄码消杀</p>
+                                <i class="icon bgffc200"></i>
+                            </div>
+                            <p class="total">{{xsNum.yellow|Qfw}}</p>
+                        </li>
+                        <li>
+                            <div class="flex-sp">
+                                <p class="title">红码消杀</p>
+                                <i class="icon bgff3939"></i>
+                            </div>
+                            <p class="total">{{xsNum.red|Qfw}}</p>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="right">
+                <div class="block mb2vh">
+                    <div class="top flex-center mb2vh">
+                        <img class="l-icon" src="./image/left.png" alt="" @click="prev('changeRedNum',changeRedList.length)">
+                        <img src="./image/l-icon.png" alt="">
+                        <p class="top-title">10分钟后即将变为红码区域</p>
+                        <img src="./image/r-icon.png" alt="">
+                        <img class="r-icon" src="./image/right.png" alt="" @click="next('changeRedNum',changeRedList.length)">
+                    </div>
+                    <p class="nodata" v-if="changeRedList.length<=0">暂无数据~</p>
+                    <div class="scroll">
+                        <ul :style="{left:changeRedNum*-scroll.len+scroll.unit}">
+                            <li v-for="(item,index) in changeRedList" :key="index">
+                                <img src="./image/yellow.png" alt="" />
+                                <p class="title">{{item.title}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="block recode">
+                    <div class="top flex-center">
+                        <img src="./image/l-icon.png" alt="">
+                        <p class="top-title">消杀记录</p>
+                        <img src="./image/r-icon.png" alt="">
+                    </div>
+                    <div class="recode-con">
+                        <p class="nodata" v-if="recodeList.length<=0">暂无消杀记录~</p>
+                        <ul>
+                            <li v-for="(item,index) in recodeList" :key="index">
+                                <div class="flex-sp-top">
+                                    <p class="area">{{item.area}}</p>
+                                    <p class="name">{{item.name}}</p>
+                                </div>
+                                <div class="flex-sp-top">
+                                    <p class="time">{{item.createTime}}</p>
+                                    <p class="status">已消杀</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mask-out" v-if="warn">
+            <div class="mask-inner">
+                <img class="close" src="./image/close.png" alt="" @click="warn=false">
+                <p>出现红码区域，请及时消杀!</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script src="./jquery.min.js"></script>
+<script src="./laydate.js"></script>
+<script src="./until.js"></script>
+<script>
+    let vue = new Vue({
+        el:'#app',
+        data(){
+            return {
+                blueList:[],
+                blueNum:0,
+                yellowList:[],
+                yellowNum:0,
+                redList:[],
+                redNum:0,
+                changeRedList:[],
+                changeRedNum:0,
+                recodeList:[],
+                recordTimer:null,
+                scroll:{
+                    len:20.58,       //移动长度
+                    unit:'vw'         //移动单位
+                },
+                warn:false,
+
+                accountTotal:0,  //游客数量
+
+                show_cp:false,
+                company:[],        //单位
+                select_cp:0,
+
+                begin_time:'',
+                end_time:'',
+                show_start:false,
+                show_end:false,
+                xsNum:{                     //消杀次数
+                    killNumber:0,
+                    red:0,
+                    yellow:0
+                },      
+            }
+        },
+        filters:{
+            Qfw(num){
+                num=(num+'').split(".");
+                var arr=num[0].split("").reverse();
+                var res=[];
+                for(var i=0,len=arr.length;i<len;i++){
+                    if(i%3===0&&i!==0){
+                        res.push(",");
+                    }
+                    res.push(arr[i]);
+                }
+                res.reverse();
+                if(num[1]){
+                    res=res.join("").concat("."+num[1]);
+                }else{
+                    res=res.join("");
+                }
+                return res;
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.initLaydate();
+
+            this.initWidth();
+            this.getLeft();
+            this.getChangeBlue();
+            this.getRecode();
+            this.getXsNum();
+            setInterval(()=>{
+                this.getLeft();
+                this.getChangeBlue();
+                this.getRecode();
+                this.getXsNum();
+            },300000)
+
+            document.querySelector('body').onclick = ()=>{
+                this.show_cp = false;
+                this.show_start = false;
+                this.show_end = false;
+            }
+        },
+        methods:{
+            // 初始化日期选择器
+            initLaydate(){
+                let now = new Date();
+                let nowyear = now.getFullYear(),nowmonth = now.getMonth(),nowdate = now.getDate();
+                //开始时间时间
+                let start,end;
+                start = laydate.render({
+                    elem: '#beginTime',
+                    max:'nowyear'+'-'+'nowmonth'+'-'+'nowdate',
+                    done: (value, date, endDate) => {
+                        //console.log(date,'------')
+                        this.show_start = false;
+                        this.begin_time = value;
+                        if(this.end_time) this.getXsNum();
+                        end.config.min = {
+                            year: date.year||nowyear,
+                            month: date.month?(date.month - 1):nowmonth,
+                            date: date.date||nowdate,
+                        }; //开始日选好后，重置结束日的最小日期
+                        end.config.value = {
+                            year: date.year||nowyear,
+                            month: date.month?(date.month - 1):nowmonth,
+                            date: date.date||nowdate,
+                        }; //将结束日的初始值设定为开始日
+                    }
+                });
+                //结束时间
+                end = laydate.render({
+                    elem: '#endTime',
+                    max:'nowyear'+'-'+'nowmonth'+'-'+'nowdate',
+                    done: (value, date, endDate) => {
+                        //console.log(date,'------')
+                        this.show_end = false;
+                        this.end_time = value;
+                        if(this.begin_time) this.getXsNum();
+                        start.config.max = {
+                            year: date.year||nowyear,
+                            month: date.month?(date.month - 1):nowmonth,
+                            date: date.date||nowdate,
+                        }; //结束日选好后，重置开始日的最大日期
+                    }
+                });
+            },
+            // 获取消杀次数
+            getXsNum(){
+                $.ajax({
+                    url:api+'screen/screen_statistics',
+                    type:'get',
+                    data:{
+                        startTime:this.begin_time,
+                        endTime:this.end_time,
+                        unitId:this.company[this.select_cp]?this.company[this.select_cp].id:0
+                    }
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.xsNum = res.data;
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            // 选择单位
+            chooseCp(index){
+                this.show_cp = false;
+                if(this.select_cp != index){
+                    this.select_cp = index;
+
+                    this.blueNum = 0;
+                    this.redNum = 0;
+                    this.yellowNum = 0;
+                    this.changeRedNum = 0;
+                    this.getLeft();
+                    this.getChangeBlue();
+                    this.getRecode();
+                    this.getXsNum();
+                }
+            },
+            initWidth(){
+                let width;
+                window.onresize = () => {
+                    width = document.body.clientWidth;
+                    this.scroll = width>1400?{len:20.58,unit:'vw'}:{len:288,unit:'px'}
+                }
+            },
+            prev(type,len){
+                if(this[type]!=0){
+                    this[type]--;
+                }
+            },
+            next(type,len){
+                if((this[type]+1)*3<len){
+                    this[type]++;
+                }
+            },
+            getLeft(){
+                $.ajax({
+                    url:api+'screen/screen_list',
+                    type:'get',
+                    data:{
+                        unitId:this.company[this.select_cp]?this.company[this.select_cp].id:0
+                    }
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.company = [{id:'0',title:'全部'},...res.data.unitList];
+                        this.accountTotal = res.data.accountTotal;
+                        this.blueList = res.data.greedList;
+                        this.yellowList = res.data.yellowList;
+                        this.redList = res.data.redList;
+                        if(res.data.redList.length>0) this.warn = true;
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            getChangeBlue(){
+                $.ajax({
+                    url:api+'screen/screen_red',
+                    type:'get',
+                    data:{
+                        unitId:this.company[this.select_cp]?this.company[this.select_cp].id:0
+                    }
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.changeRedList = res.data.list;
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            getRecode(){
+                $.ajax({
+                    url:api+'screen/screen_log',
+                    type:'get',
+                    data:{
+                        unitId:this.company[this.select_cp]?this.company[this.select_cp].id:0
+                    }
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.recodeList = res.data.list;
+                        this.$nextTick(()=>{
+                            this.initScroll();
+                        })
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            initScroll(){
+                let num = this.recodeList.length;
+                //console.log(num)
+                if(num<=8) return;
+                let dom = document.querySelector('.recode-con'),h = document.querySelector('.recode-con li').offsetHeight;
+                clearInterval(this.recordTimer);
+                this.recordTimer = setInterval(()=>{
+                    dom.style['scroll-behavior'] = 'smooth';
+                    let top = dom.scrollTop;
+                    if(top%h!=0) top = parseInt(top/h)*h;
+                    //console.log(dom,top,h)
+                    if(top/h+9>=num){
+                        dom.style['scroll-behavior'] = 'initial';
+                        dom.scrollTop = 0;
+                    }else{
+                        dom.scrollTop = top + h;
+                    }
+                    
+                },2000)
+            }
+        }
+    })
+</script>
+</html>

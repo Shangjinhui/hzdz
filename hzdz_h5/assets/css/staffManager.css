@@ -1,0 +1,50 @@
+.contain{
+    width:7.5rem;
+    min-height:100vh;
+    background:#F0F4F7;
+    padding:.3rem .24rem;
+}
+.con{margin-bottom: .3rem;;}
+.con .top{
+    width: 100%;
+    height: .98rem;
+    background: #FFFFFF;
+    border-radius: .2rem;
+    padding:0 .3rem;
+    
+    font-size: .28rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #2A2C2F;
+}
+
+.con ul li:nth-of-type(1){
+    border-radius:.2rem .2rem 0 0;
+}
+.con ul li{
+    width: 100%;
+    height: 1.1rem;
+    background: #FFFFFF;
+    box-shadow: 0px -1px 0px 0px #DAE0E5;
+    padding:0 .3rem;
+}
+.avatar{
+    width:.58rem;
+    height:.58rem;
+    border-radius: 50%;
+    margin-right:.24rem;
+}
+.name{
+    width:1.55rem;
+    font-size: .36rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #2A2C2F;
+}
+.phone{
+    font-size: .28rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #93979D;
+}
+.icon_down{
+    width:.16rem;
+    height:.28rem;
+}

@@ -1,0 +1,9 @@
+<view class="res">
+  <!-- <view class="mian">
+    <image mode="scaleToFill" src="{{ imgUrl + 'yk-img12.png'}}" class="logo" />
+    <image mode="scaleToFill" src="{{ imgUrl + 'yk-img10.png'}}" class="ewm" />
+    <view class="detaile">扫描东站各场所二维码，可实时查看消杀状态以及近期的消杀记录</view>
+    <image mode="scaleToFill" src="{{ imgUrl + 'yk-img11.png'}}" class="center" />
+  </view> -->
+  <web-view id="web-view" src="{{url}}" onMessage="onMessage"></web-view>
+</view>

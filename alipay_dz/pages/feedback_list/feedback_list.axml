@@ -1,0 +1,13 @@
+<view class="res">
+   <scroll-view class="scroll" scroll-y="{{true}}" onScrollToLower="lower" a:if="{{list.length}}">
+      <view class="box" a:for="{{list}}">
+        <view class="time">提交时间：{{item.createTime}}</view>
+        <view class="detaile">
+          {{item.content}}
+        </view>
+      </view>
+   </scroll-view>
+   <view a:if="{{!list.length}}" class="tip">
+     暂无数据
+   </view>
+</view>

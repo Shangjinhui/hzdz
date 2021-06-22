@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>消杀地点管控</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/address.css">
+    <script src="./assets/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="contain">
+            <div class="top" v-if="blue_list.length>0">
+                <p class="title">绿码区域</p>
+                <ul class="con flex-sp flex-wrap">
+                    <li @click="toLink(item.id)" v-for="(item,index) in blue_list" :key="index">
+                        <img src="./assets/images/blue.png" alt="">
+                        <p class="title">{{item.title}}</p>
+                        <p class="dis">距上次消杀<br/><span>{{item.dis_hour}}</span>小时<span>{{item.dis_minute}}</span>分<span>{{item.dis_second}}</span>秒</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="top" v-if="yellow_list.length>0">
+                <p class="title">黄码区域</p>
+                <ul class="con flex-sp flex-wrap">
+                    <li @click="toLink(item.id)" v-for="(item,index) in yellow_list" :key="index">
+                        <img src="./assets/images/yellow.png" alt="">
+                        <p class="title">{{item.title}}</p>
+                        <p class="dis">距上次消杀<br/><span>{{item.dis_hour}}</span>小时<span>{{item.dis_minute}}</span>分<span>{{item.dis_second}}</span>秒</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="top" v-if="red_list.length>0">
+                <p class="title">红码区域</p>
+                <ul class="con flex-sp flex-wrap">
+                    <li @click="toLink(item.id)" v-for="(item,index) in red_list" :key="index">
+                        <img src="./assets/images/red.png" alt="">
+                        <p class="title">{{item.title}}</p>
+                        <p class="dis">距上次消杀<br/><span>{{item.dis_hour}}</span>小时<span>{{item.dis_minute}}</span>分<span>{{item.dis_second}}</span>秒</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="nodata" v-if="blue_list.length==0&&yellow_list.length==0&&red_list.length==0">{{load}}</div>
+        </div>
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script>
+    let vue = new Vue({
+        el:"#app",
+        data(){
+            return {
+                blue_list:[],
+                yellow_list:[],
+                red_list:[],
+                nowTime:'',     //当前时间戳
+                load:'加载中...'
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.getData();
+        },
+        methods:{
+            getData(){
+                $.ajax({
+                    url:api+'statistics/area_list',
+                    type:'get'
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.blue_list = res.data.greedList;
+                        this.yellow_list = res.data.yellowList;
+                        this.red_list = res.data.redList;
+                        this.nowTime = res.data.nowTime;
+                        if(res.data.greedList.length==0&&res.data.greedList.length==0&&res.data.greedList.length==0){
+                            this.load = '暂无消杀地点记录哦~';
+                        }
+                        this.initTime(res.data.greedList,'blue_list');
+                        this.initTime(res.data.yellowList,'yellow_list');
+                        this.initTime(res.data.redList,'red_list');
+                        setInterval(()=>{
+                            this.nowTime += 1; 
+                            this.initTime(res.data.greedList,'blue_list');
+                            this.initTime(res.data.yellowList,'yellow_list');
+                            this.initTime(res.data.redList,'red_list');
+                        },1000)
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            toLink(id){
+                location.href = 'epCode.html?id='+id;
+            },
+            //处理时间格式
+            initTime(arr,type){
+                let now = this.nowTime*1000;
+                for(let i=0;i<arr.length;i++){
+                    let last = arr[i].startTime*1000;
+                    let dis = now-last;
+                    arr[i].dis_hour = global.addZero(parseInt(dis/1000/60/60));
+                    arr[i].dis_minute = global.addZero(parseInt(dis%(1000*60*60)/1000/60));
+                    arr[i].dis_second = global.addZero(parseInt(dis%(1000*60)/1000));
+                } 
+                this[type] = [...arr];
+            },
+        }
+    })
+</script>
+</html>

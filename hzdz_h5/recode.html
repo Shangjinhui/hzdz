@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/recode.css">
+    <script src="./assets/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="contain">
+            <div class="top flex-sp">
+                <div @click="getAll">
+                    全部
+                </div>
+                <div class="col666 flex rel">
+                    筛选 <image class="icon_down" mode="scaleToFill" src="./assets/images/yk-img13.png"/>
+                    <input type="text" id="date_picker" readonly>
+                </div>
+            </div>
+            <div class="con">
+                <ul class="ul">
+                    <li class="li" v-for="(item,index) in list" @click="toDetail(item.id)">
+                        <image class="icon" mode="scaleToFill" src="./assets/images/success.png"/>
+                        <div class="flex-sp-btm">
+                            <div class="loc">{{item.area}}</div>
+                            <div class="name">{{item.name}}</div>
+                        </div>
+                        <div class="flex-sp">
+                            <div class="time">{{item.createTime}}</div>
+                            <div class="status">已消杀</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="load">{{load}}</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script src="./assets/js/laydate/laydate.js"></script>
+<script>
+    //获取参数
+    let type = location.href.split('type=')[1]?location.href.split('type=')[1].split('&')[0]:'';
+    let id = location.href.split('id=')[1]?location.href.split('id=')[1].split('&')[0]:'';
+    //console.log(type,id);
+    document.title = type==1?'历史记录':'消杀记录';
+    //
+    let vue = new Vue({
+        el: "#app",
+        data() {
+            return {
+                id,
+                load:'加载中...',     //没有更多数据了~
+                loadF:true,          //阻止多次触发
+                list:[],
+                pageNo:1,
+                limit:20,
+                search:'',
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.initLaydate();
+            this.initScroll();
+            this.getData();
+        },
+        methods:{
+            initLaydate(){
+                laydate.render({
+                    elem: '#date_picker',
+                    max:0,
+                    done:(val,date)=>{
+                        //console.log(val,date)
+                        this.search = val;
+                        this.pageNo = 1;
+                        this.list = [];
+                        this.load = '加载中...';
+                        this.getData();
+                    }
+                });
+            },
+            initScroll(){
+                window.onscroll = e => {
+                    let a_h = document.documentElement.offsetHeight,
+                    s_t = document.documentElement.scrollTop,
+                    s_h = document.documentElement.clientHeight;
+                    //console.log(s_h,s_t,a_h)
+                    if(s_h+s_t > a_h-40){
+                        if(this.loadF){
+                            this.loadF = false;
+                            this.pageNo += 1;
+                            //console.log('加载数据');
+                            this.getData();                         
+                        }
+                        
+                    }
+                }
+            },
+            getAll(){
+                this.search = '';
+                this.pageNo = 1;
+                this.list = [];
+                this.load = '加载中...';
+                this.getData();
+            },
+            getData(){
+                let data = {
+                    id:this.id,
+                    pageNo:this.pageNo,
+                    limit:this.limit,
+                    search:this.search
+                }
+                $.ajax({
+                    url:api+(type==1?'statistics/log_list':'statistics/worker_log'),
+                    type:'get',
+                    data
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        if((this.pageNo-1)*this.limit+res.data.list.length>=res.data.count){
+                            this.load = '没有更多数据了~';
+                            this.loadF = false;
+                        }else{
+                            this.load = '加载中...';
+                            this.loadF = true;
+                        }
+                        let list = this.list;
+                        list.push(...res.data.list)
+                        this.list = [...list];
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            toDetail(id){
+                location.href = 'recodeDetail.html?id='+id;
+            }
+        }
+    })
+</script>
+
+</html>

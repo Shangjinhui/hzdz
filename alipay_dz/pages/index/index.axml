@@ -1,0 +1,11 @@
+<view class="res">
+  <image mode="scaleToFill" src="{{imgUrl+'yk_img1.png'}}" class="image"/>
+  <view class="box">
+    <view class="link" onTap="auth_Page">点击查看防疫码</view>
+    <view class="fa">实时查看防疫码状态</view>
+  </view>
+  <view class="fix-nav">
+    <navigator url="/pages/staff_login/staff_login?type=1&id={{id}}">员工通道</navigator>
+    <navigator url="/pages/staff_login/staff_login?type=2&id={{id}}" class="on">管理员通道</navigator>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+东站正式地址https://fym.hzdzsngwh.com/hzdz_pc     https://fym.hzdzsngwh.com/hzdz_h5
+服务器：47.98.60.178  root  Palmaphzdz201913868105355  22
+
+测试地址https://demo2.yunmofo.cn/hzdz_pc/   https://demo2.yunmofo.cn/hzdz_h5/
+
+设计稿蓝湖：https://lanhuapp.com/web/#/item/project/board?pid=f920e80e-6b33-47ac-943b-5f0cf176769f&teamId=469d160d-2a3e-4c0a-8aec-e1c8c2d13ab7

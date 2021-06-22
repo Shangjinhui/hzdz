@@ -1,0 +1,26 @@
+<view class="contain">
+  <view class="top">
+    <image class="logo" mode="scaleToFill" src="../../assets/images/img2.png"/>
+    <view class="title">
+      {{detail.area}}，已完成消杀
+    </view>
+  </view>
+  <view class="con">
+    <view class="formula flex-top">
+      <view class="l">药水配方:</view>
+      <view class="r flex-son">{{detail.potion}}</view>
+    </view>
+    <view class="ul flex-top">
+      <view class="l">消杀人员:</view>
+      <view class="r flex-son">{{detail.name}}</view>
+    </view>
+    <view class="ul flex-top">
+      <view class="l">工      号:</view>
+      <view class="r flex-son">{{detail.jobNumber}}</view>
+    </view>
+    <view class="ul flex-top">
+      <view class="l">消杀时间:</view>
+      <view class="r flex-son">{{detail.createTime}}</view>
+    </view>
+  </view>
+</view>

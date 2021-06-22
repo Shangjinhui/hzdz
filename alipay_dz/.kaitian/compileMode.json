@@ -1,0 +1,54 @@
+{
+  "current": null,
+  "modes": [
+    {
+      "title": "授权页面",
+      "page": "pages/login/login"
+    },
+    {
+      "title": "公用扫码进入页面",
+      "page": "pages/index/index"
+    },
+    {
+      "title": "扫码页面",
+      "page": "pages/scan_code/scan_code"
+    },
+    {
+      "title": "我的-个人中心",
+      "page": "pages/center/center"
+    },
+    {
+      "title": "游客-防疫码",
+      "page": "pages/yk_code/yk_code"
+    },
+    {
+      "title": "游客-意见反馈",
+      "page": "pages/feedback/feedback"
+    },
+    {
+      "title": "员工-登陆",
+      "page": "pages/staff_login/staff_login"
+    },
+    {
+      "title": "员工-首页",
+      "page": "pages/staff_index/staff_index",
+      "query": "appkey=2"
+    },
+    {
+      "title": "员工-消除记录",
+      "page": "pages/staff_record/staff_record"
+    },
+    {
+      "title": "管理员-历史记录",
+      "page": "pages/admin_recond/admin_recond"
+    },
+    {
+      "title": "管理员消杀记录-所有地点",
+      "page": "pages/admin_location/admin_location"
+    },
+    {
+      "title": "游客-意见反馈列表",
+      "page": "pages/feedback_list/feedback_list"
+    }
+  ]
+}

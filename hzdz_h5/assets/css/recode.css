@@ -1,0 +1,69 @@
+.contain{
+    width:7.5rem;
+    min-height:100vh;
+    background:#F0F4F7;
+    padding:.3rem .24rem;
+}
+.nodata{font-size: .28rem;text-align: center;}
+  .top{
+    width: 7.02rem;
+    height: .98rem;
+    background: #FFFFFF;
+    border-radius: .2rem;
+    
+    font-size: .28rem;
+    color: #2A2C2F;
+    padding:0 .3rem;
+    box-sizing: border-box;
+    margin-bottom:1px;
+  }
+ .top .col666{color:#666;}
+ #date_picker{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+ }
+ .icon_down{
+    width:.16rem;
+    height:.28rem;
+    margin-left:.13rem;
+  }
+  .con{
+    width: 7.02rem;
+    background: #FFFFFF;
+    border-radius: .2rem;
+    padding:.44rem .4rem .44rem .53rem;
+    box-sizing: border-box;
+  }
+  .con .ul{
+    border-left:1px solid #DAE0E5;
+  }
+  .ul .li{
+    margin-bottom:.35rem;
+    padding-left:.44rem;
+    position:relative;
+  }
+  .icon{
+    width:.3rem;
+    height:.3rem;
+    position:absolute;
+    left:-0.15rem;
+    top:0.05rem;
+  }
+  .loc{
+    font-size: .36rem;
+    color: #2A2C2F;
+  }
+  .name,.time{
+    font-size: .28rem;
+    color: #93979D;
+    line-height:.4rem;
+  }
+  .status{
+    font-size: .28rem;
+    color: #4C8EF8;
+    line-height:.4rem;
+  }

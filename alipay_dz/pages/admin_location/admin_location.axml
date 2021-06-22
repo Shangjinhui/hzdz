@@ -1,0 +1,11 @@
+<scroll-view class="contain" scroll-y="{{true}}" onScrollToLower="lower">
+<view class="nodata" a:if="{{list.length<=0}}">
+  暂无数据~
+</view>
+  <view class="ul flex-sp flex-wrap">
+    <view class="li" a:for="{{list}}" data-id="{{item.id}}" onTap="toList">
+      <image class="status" mode="scaleToFill" src="{{imgs[item.type]}}"/>
+      <view class="title">{{item.title}}</view>
+    </view>
+  </view>
+</scroll-view>

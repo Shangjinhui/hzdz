@@ -1,0 +1,13 @@
+<view class="res">
+  <view class="mian">
+    <view class="f-cb title">
+      <image mode="scaleToFill" src="{{imgUrl +'yk-img19.png'}}" class="fl image"/>
+      <text>东站防疫申请</text>
+    </view>
+    <view class="sub-tit">授权信息</view>
+    <view class="f-cb btn">
+      <view class="colse fl" onTap="returnPage">拒绝</view>
+      <button type="primary" onTap="getAuthCode">获取授权码</button>
+    </view>
+  </view>
+</view>

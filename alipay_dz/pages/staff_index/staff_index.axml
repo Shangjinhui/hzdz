@@ -1,0 +1,43 @@
+<view class="contain">
+  <image class="logo" mode="scaleToFill" src="{{imgUrl +'icon_logo.png'}}"/>
+  <!-- 确认消杀 -->
+  <!-- <image a:if="{{id&&!success}}" class="con" mode="scaleToFill" src="../../assets/images/img1.png" onTap="Chasha" /> -->
+  <!-- 消杀完成 -->
+  <view a:if="{{id}}">
+    <image class="con2" mode="scaleToFill" src="{{imgUrl +'success.png'}}"/>
+    <view class="tip">
+      已消杀
+    </view>
+    <image class="icon-home" mode="scaleToFill" onTap="toHome" src="{{imgUrl +'icon_home.png'}}"/>
+  </view>
+  <!-- 首页扫一扫 -->
+  <!-- <form onSubmit="scanCode">
+    <view>
+      <button type="primary" onTap="openScan">扫码</button>
+    </view>
+  </form> -->
+  <!-- <image a:if="{{!id}}" onTap="openScan" class="con" mode="scaleToFill" src="{{imgUrl +'sao.png'}}"/> -->
+  <view a:if="{{id}}">
+    <view class="title">
+      杭州东站防疫码.{{detail.title}}
+    </view>
+    <view class="desc">
+      药水配方:{{detail.potion}}
+    </view>
+  </view>
+  <!-- {{text}} -->
+  <!-- //游客 -->
+  <view class="btm-tip" a:if="{{date.nowType=='0' && !id}}">
+    扫描东站各场所二维码，可实时查看消杀状态以及近期的消杀记录
+  </view>
+  <!-- //员工 -->
+  <view class="btm-tip" a:if="{{date.nowType=='1' && !id}}">
+    每次消杀后，扫描场所二维码进行消杀确认操作！
+  </view>
+  <!-- //管理员 -->
+  <view class="btm-tip center" a:if="{{date.nowType=='2' && !id}}">
+    扫码查看防疫码信息
+  </view>
+
+  <image class="icon-self" mode="scaleToFill" src="{{imgUrl +'icon_avatar.png'}}" onTap="center_link"/>
+</view>

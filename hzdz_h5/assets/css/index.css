@@ -1,0 +1,37 @@
+.contain{
+    width:7.5rem;
+    min-height:100vh;
+    background:#F0F4F7;
+    padding:.3rem .24rem;
+}
+.top{
+    width:100%;
+    padding:.22rem .27rem;  
+    background: #FFFFFF;
+    border-radius: .2rem;
+    margin-bottom:.3rem;
+}
+.top .title{
+    font-size: .32rem;
+    color:#2A2C2F;
+    line-height:.45rem;
+}
+.top ul li{
+    width:33%;
+    padding:.28rem 0 .2rem;
+}
+.top ul li .img{
+    height: 1.12rem;
+}
+.top ul li .img img{
+    width:.88rem;
+    max-height: 100%;
+    margin:0 auto;
+}
+.top ul li p{
+    font-size: .28rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #2A2C2F;
+    line-height: .4rem;
+    text-align: center;
+}

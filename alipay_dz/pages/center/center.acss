@@ -1,0 +1,109 @@
+.res{
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #F0F4F7;
+  overflow: hidden
+}
+.mian{
+  position: relative;
+  z-index: 5;
+}
+.images{
+  display: block;
+  width: 100%;
+  height: 1623rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.header{
+  text-align: center;
+  margin: 148rpx 0 77rpx;
+  position: relative;
+}
+.header .pic{
+  width: 176rpx;
+  height: 176rpx;
+  border-radius: 50%;
+  border: 2rpx solid #fff;
+  position: relative;
+  margin: 0 auto; 
+}
+.header .state-yk{
+  width: 93rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #478BFB;
+  border-radius: 20px;
+  text-align: center;
+  position: absolute;
+  top: 160rpx;
+  left: calc(50% - 47rpx);
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  box-shadow: 0 2rpx 4rpx 0 rgba(71, 139, 251,0.5);
+}
+.header .state-yk.on{
+  background: #FDC23E;
+  color: #5F4600;
+  box-shadow: 0 2rpx 4rpx 0 rgba(253, 194, 62, 0.5);
+}
+.header .state-yk.cut{
+  background: #FC562C;
+  color: #fff;
+  box-shadow: 0 2rpx 4rpx 0 rgba(252, 86, 44, 1);
+}
+
+.header .name{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2A2C2F;
+  line-height: 42rpx;
+  text-align: center;
+  margin-top: 31rpx;
+}
+.list{
+  width: 702rpx;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  overflow: hidden;
+  background-color: #fff;
+}
+.list navigator{
+  display: block;
+  border-bottom: 1px solid #DAE0E5;
+  padding: 36rpx 20rpx 30rpx 36rpx;
+  height: 44rpx;
+  line-break: 44rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #2A2C2F;
+}
+.list navigator:nth-child(2){
+  border-bottom:0;
+}
+.list navigator .icon{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 27rpx;
+  display: block
+}
+.list navigator .arr{
+  width: 16rpx;
+  height: 28rpx;
+  display: block;
+  margin-top: 8rpx;
+}
+.home{
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 25rpx;
+  bottom: 41rpx;
+}

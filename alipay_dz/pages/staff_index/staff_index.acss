@@ -1,0 +1,69 @@
+.contain{
+  padding-top:126rpx;
+}
+.logo{
+  width:320rpx;
+  height:118rpx;
+  display:block;
+  margin:0 auto;
+}
+.con{
+  width:400rpx;
+  height:400rpx;
+  display:block;
+  margin:113rpx auto 0;
+}
+
+.con2{
+  width:229rpx;
+  height:229rpx;
+  display:block;
+  margin:155rpx auto 0;
+}
+.tip{
+  
+  font-size: 28rpx;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  margin-top:36rpx;
+  margin-bottom:84rpx;
+  text-align: center;
+}
+
+.title{
+  text-align: center;
+  font-size: 34rpx;
+  color: #4C8EF8;
+  line-height: 48rpx;
+  margin-top:30rpx;
+}
+.desc{
+  width:557rpx;
+  font-size: 28rpx;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  margin:37rpx auto 0;
+}
+.btm-tip{
+  width: 641rpx;
+  font-size: 28rpx;
+  color: #6C6F74;
+  line-height: 40rpx;
+  margin:53rpx auto 0;
+}
+
+.icon-self{
+  width:120rpx;
+  height:120rpx;
+  position:fixed;
+  right:25rpx;
+  bottom:110rpx;
+}
+.icon-home{
+  width:120rpx;
+  height:120rpx;
+  position:fixed;
+  right:170rpx;
+  bottom:110rpx;
+}
+.center{text-align: center;}

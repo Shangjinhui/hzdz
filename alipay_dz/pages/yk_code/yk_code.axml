@@ -1,0 +1,95 @@
+<view class="res">
+  <view class="mian">
+    <view class="box-time">
+      <view class="time">{{year}}</view>
+      <view class="new-time">{{time}}</view>
+      <view class="l-circle"></view>
+      <view class="r-circle"></view>
+    </view>
+    <view class="centent">
+      <view class="wid-margin">
+        <image mode="scaleToFill" src="{{imgUrl + 'yk_img20.jpg'}}" class="image" a:if="{{info.type=='-1'}}"/>
+        <image mode="scaleToFill" src="{{imgUrl + 'yk-img4.png'}}" class="image" a:if="{{info.type=='0'}}"/>
+        <image mode="scaleToFill" src="{{imgUrl + 'yk-img6.png'}}" class="image" a:if="{{info.type=='1'}}"/>
+        <image mode="scaleToFill" src="{{imgUrl + 'yk-img5.png'}}" class="image" a:if="{{info.type=='2'}}"/>
+        <view class="title">杭州东站防疫码.{{info.title}}</view>
+        <!-- 游客展示 -->
+        <view a:if="{{date.nowType==0}}">
+          <!-- -1异常，0绿码，1黄码，2红码 -->
+          
+          <view class="sub-tit">
+            药水配方:{{info.potion}}
+          </view>
+          <view class="fa" a:if="{{info.type=='-1'}}"><text>*</text>该地点暂未消杀，请等待消杀</view>
+          <view class="fa" a:if="{{info.type=='0'}}"><text>*</text>绿码：该区域已按时消杀</view>
+          <view class="fa" a:if="{{info.type=='1'}}"><text>*</text>黄码：该区域已过最佳消杀时间，防控人员即将消杀 </view>
+          <view class="fa" a:if="{{info.type=='2'}}"><text>*</text>红码：该区域未及时消杀，请减少触碰和停留时间</view>
+          <view class="advice" onTap="number_link">反馈建议</view>
+        </view>
+        <!-- 管理员展示 -->
+        <view a:if="{{date.nowType==2&&list.length>0}}">
+          <view class="sub-tit2">
+            <view>上一次消杀时间{{lastTime.time}}，</view>
+            <view>
+             距离上次消杀一过去<text class="colff551d">{{lastTime.disH}}</text>小时<text class="colff551d">{{lastTime.disM}}</text>分钟<text class="colff551d">{{lastTime.disS}}</text>秒
+            </view>
+            <view class="sub-tit3">
+              药水配方:{{info.potion}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 游客展示 -->
+  <view class="yk-list f-cb" a:if="{{date.nowType==0}}">
+    <view class="f-cb" a:if="{{list.length}}">
+      <view class="fl state">
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img9.png'}}" class="images"/>
+        <text>已消杀</text>
+      </view>
+      <view class="fr mbox">
+        <view class="title">最近消杀时间</view>
+        <view class="sub-tit">{{list[0].createTime}}</view>
+      </view>
+    </view>
+    <view class="center" a:if="{{!list.length}}">
+      暂无记录
+    </view>
+  </view>
+  <!-- 管理员展示 -->
+  <view class="con" a:if="{{date.nowType==2}}">
+    <view class="top flex-sp">
+      <view>
+        显示近10条消杀记录
+      </view>
+      <view class="col666 flex" onTap="lookAll">
+        查看全部 <image class="icon_down" mode="scaleToFill" src="../../assets/images/yk-img13.png"/>
+      </view>
+    </view>
+    <view class="ul-out">
+      <view class="ul">
+        <view class="li" a:for="{{list}}">
+          <image class="icon" mode="scaleToFill" src="../../assets/images/success.png"/>
+          <view class="flex-sp-btm">
+            <view class="loc">{{item.area}}</view>
+            <view class="name">{{item.name}}</view>
+          </view>
+          <view class="flex-sp">
+            <view class="time">{{item.createTime}}</view>
+            <view class="status">已消杀</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+    
+  <view class="fix-box">
+    <navigator url="/pages/staff_index/staff_index" class="link" onTap="home_Link">
+      <image mode="scaleToFill" src="{{imgUrl+'yk-img3.png'}}"/>首页
+    </navigator>
+    <navigator url="/pages/center/center" class="link" onTap="center_Link">
+      <image mode="scaleToFill" src="{{imgUrl+'yk-img2.png'}}"/>我的
+    </navigator>
+  </view>
+</view>

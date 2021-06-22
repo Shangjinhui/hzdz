@@ -1,0 +1,62 @@
+.contain{
+  padding-top:128rpx;
+}
+.avatar{
+  width:194rpx;
+  height:194rpx;
+  border-radius: 50%;
+  display: block;
+  margin:0 auto;
+}
+.tip{
+  font-size:38rpx;
+  color:#2A2C2F;
+  text-align: center;
+  margin-top:36rpx;
+}
+
+.from{
+  margin-top:50rpx;
+  
+}
+.from .li{
+  width: 592rpx;
+  height: 98rpx;
+  box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.11);
+  border-radius: 10rpx;
+  border: 1px solid #DBDEE2;
+  margin:0 auto 36rpx;
+  padding:0 29rpx;
+  box-sizing: border-box;
+  background:#fff;
+
+}
+.from .li .icon{
+  width:44rpx;
+  height:44rpx;
+  margin-right:23rpx;
+}
+.from .li input{
+  font-size:32rpx;
+  background-color: transparent;
+}
+
+.login{
+  width: 592rpx;
+  height: 98rpx;
+  background: #4C8EF8;
+  border-radius: 8rpx;
+  margin:60rpx auto 0;
+  
+  font-size: 36rpx;
+  color: #FFFFFF;
+  line-height: 50px;
+  text-align: center;
+}
+.desc{
+  width: 592rpx;
+  font-size: 26rpx;
+  color: #6C6F74;
+  line-height: 37rpx;
+  margin:53rpx auto 0;
+}

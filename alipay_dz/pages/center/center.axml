@@ -1,0 +1,35 @@
+<view class="res">
+  <image mode="scaleToFill" src="{{ imgUrl + 'yk-img17.png'}}" class="images"/>
+  <view class="mian">
+    <view class="header">
+      <image mode="scaleToFill" src="{{date.avatar}}" class="pic"/>
+      <view class="state-yk" a:if="{{date.nowType=='0'}}">游客</view>
+      <view class="state-yk on" a:if="{{date.nowType=='1'}}">员工</view>
+      <view class="state-yk cut" a:if="{{date.nowType=='2'}}">管理员</view>
+      <view class="name">{{date.nickname}}</view>
+    </view>
+    <view class="list">
+      <navigator class="f-cb mbox" url="/pages/feedback_list/feedback_list" a:if="{{date.nowType=='0'}}">
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img16.png'}}" class="icon fl"/>
+        <text class="fl">我的反馈建议</text>
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img13.png'}}" class="arr fr"/>
+      </navigator>
+      <navigator class="f-cb mbox" url="/pages/staff_record/staff_record" a:if="{{date.nowType=='1'}}">
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img18.png'}}" class="icon fl"/>
+        <text class="fl">我的消杀记录</text>
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img13.png'}}" class="arr fr"/>
+      </navigator>
+      <navigator class="f-cb mbox" url="/pages/admin_location/admin_location" a:if="{{date.nowType=='2'}}">
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img18.png'}}" class="icon fl"/>
+        <text class="fl">所有地点消杀记录</text>
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img13.png'}}" class="arr fr"/>
+      </navigator>
+      <navigator class="f-cb mbox" url="/pages/index/index">
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img15.png'}}" class="icon fl"/>
+        <text class="fl">切换身份</text>
+        <image mode="scaleToFill" src="{{imgUrl+'yk-img13.png'}}" class="arr fr"/>
+      </navigator>
+    </view>
+  </view>
+  <image mode="scaleToFill" src="{{imgUrl + 'yk-img14.png'}}" class="home" onTap="home_link"/>
+</view>

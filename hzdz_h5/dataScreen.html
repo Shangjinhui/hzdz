@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>消杀数据总览</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/dataScreen.css">
+    <script src="./assets/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="top flex">
+            <p class="flex-son flex-sp rel">
+                <span class="flex-son">{{begin_time||'开始时间'}}</span>
+                <img class="icon" src="./assets/images/date.png" alt="">
+                <input type="text" id="beginTime" readonly>
+            </p>
+            <p class="connect">-</p>
+            <p class="flex-son flex-sp rel">
+                <span class="flex-son">{{end_time||'截止时间'}}</span>
+                <img class="icon" src="./assets/images/date.png" alt="">
+                <input type="text" id="endTime" readonly>
+            </p>
+        </div>
+        <!-- request status -->
+        <p class="refresh" v-if="refresh">更新中~</p>
+        <!-- request status -->
+        <div class="contain">
+            <ul class="flex-sp flex-wrap">
+                <li class="flex">
+                    <img src="./assets/images/icon1.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.red}}</span>次</p>
+                        <p class="tip">红码次数</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <img src="./assets/images/icon2.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.yellow}}</span>次</p>
+                        <p class="tip">黄码次数</p>
+                    </div>
+                </li>
+                <li class="line"></li>
+                <li class="flex">
+                    <img src="./assets/images/icon3.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.killNumber}}</span>次</p>
+                        <p class="tip">已消杀次数</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <img src="./assets/images/icon4.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.area}}</span>个</p>
+                        <p class="tip">消杀场所数</p>
+                    </div>
+                </li>
+                <li class="line"></li>
+                <li class="flex">
+                    <img src="./assets/images/icon5.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.manager}}</span>个</p>
+                        <p class="tip">管理员人数</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <img src="./assets/images/icon6.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.worker}}</span>个</p>
+                        <p class="tip">员工人数</p>
+                    </div>
+                </li>
+                <li class="line"></li>
+                <li class="flex">
+                    <img src="./assets/images/icon7.png" alt="">
+                    <div>
+                        <p class="num"><span>{{detail.feedback}}</span>次</p>
+                        <p class="tip">接受反馈次数</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script src="./assets/js/laydate/laydate.js"></script>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data() {
+            return {
+                begin_time:'',
+                end_time:'',
+                detail:{},
+                refresh:false,
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.initLaydate();
+            this.getData();
+        },
+        methods:{
+            getData(){
+                this.refresh = true;
+                let data = {
+                    startTime:this.begin_time,
+                    endTime:this.end_time
+                }
+                $.ajax({
+                    url:api+'statistics/statistics_info',
+                    type:'get',
+                    data
+                }).then(res=>{
+                    //console.log(res);
+                    this.refresh = false;
+                    if(res.returnCode=='0000'){
+                        this.detail = res.data;
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            initLaydate(){
+                //开始时间时间
+                let start,end;
+                start = laydate.render({
+                    elem: '#beginTime',
+                    done: (value, date, endDate) => {
+                        this.begin_time = value;
+                        if(this.end_time) this.getData();
+                        end.config.min = {
+                            year: date.year,
+                            month: date.month - 1,
+                            date: date.date,
+                        }; //开始日选好后，重置结束日的最小日期
+                        end.config.value = {
+                            year: date.year,
+                            month: date.month - 1,
+                            date: date.date,
+                        }; //将结束日的初始值设定为开始日
+                    }
+                });
+        
+                //结束时间
+                end = laydate.render({
+                    elem: '#endTime',
+                    done: (value, date, endDate) => {
+                        this.end_time = value;
+                        if(this.begin_time) this.getData();
+                        start.config.max = {
+                            year: date.year,
+                            month: date.month - 1,
+                            date: date.date,
+                        }; //结束日选好后，重置开始日的最大日期
+                    }
+                });
+            }
+        }
+    })
+</script>
+
+</html>

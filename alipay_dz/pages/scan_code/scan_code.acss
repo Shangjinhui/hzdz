@@ -1,0 +1,32 @@
+.mian{
+  width: 582rpx;
+  margin: 0 auto;
+  padding-top: 126rpx;
+}
+.logo{
+  display: block;
+  width:320rpx;
+  height: 118rpx;
+  margin: 0 auto 113rpx;
+}
+.ewm{
+  display: block;
+  width: 400rpx;
+  height: 400rpx;
+  margin: 0 auto 53rpx;
+}
+.detaile{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6C6F74;
+  line-height: 40rpx;
+}
+.center{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right:25rpx;
+  bottom: 41rpx;
+  z-index: 10;
+}

@@ -1,0 +1,221 @@
+.res{
+  padding: 40rpx 24rpx 130rpx;
+  background-color: #4C8EF8;
+  min-height: calc(100vh - 170rpx);
+}
+.mian .box-time{
+  background-color: #fff;
+  border-radius:20rpx 20rpx 0 0;
+  text-align: center;
+  padding: 35rpx 0 30rpx;
+  box-shadow: 0 20rpx 40rpx 0 rgba(76, 142, 248, 0.1);
+  position: relative;
+  z-index: 5;
+}
+.box-time .time{
+  font-size: 38rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #868B92;
+  line-height: 53rpx;
+  margin-bottom: 19rpx;
+}
+.box-time .new-time{
+  font-size: 90rpx;
+  font-family: Roboto-Bold, Roboto;
+  font-weight: bold;
+  color: #2A2C2F;
+  line-height: 90rpx;
+}
+.box-time .l-circle,
+.box-time .r-circle{
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #4C8EF8;
+  position: absolute;
+  bottom: -5rpx;
+  border-radius: 50%;
+}
+.box-time .l-circle{
+  left: -18rpx;
+}
+.box-time .r-circle{
+  right: -18rpx;
+}
+
+.centent{
+  background-color: #fff;
+  border-radius: 0 0 20rpx 20rpx;
+  text-align: center;
+  padding: 48rpx 0 31rpx;
+}
+.centent .wid-margin{
+  width:557rpx;
+  margin: 0 auto;
+}
+.centent .image{
+  display: block;
+  width: 402rpx;
+  height: 402rpx;
+  margin: 0 auto;
+}
+.centent .title{
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #4C8EF8;
+  line-height: 48rpx;
+  margin: 12rpx 0 37rpx;
+}
+.centent .sub-tit,.centent .sub-tit3{
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  margin-bottom: 15rpx;
+  text-align: left;
+}
+.centent .sub-tit2{
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  margin-bottom: 15rpx;
+  text-align: center;
+}
+.centent .sub-tit3{margin-top:32rpx;}
+.colff551d{color:#ff551d;}
+.centent .fa{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6C6F74;
+  line-height: 40rpx;
+  margin-bottom: 30rpx;
+  text-align: left;
+}
+.centent .fa text{
+  color: #FC5626;
+}
+.centent .advice{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #93979D;
+  line-height: 40rpx;
+  text-align: center;
+  display: inline-block;
+}
+.yk-list{
+  width: 100%;
+  border-radius: 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 58rpx 0;
+}
+.yk-list .state{
+  width: 189rpx;
+  text-align: center;
+}
+.yk-list .state .images{
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 auto 14rpx;
+}
+.yk-list .state text{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4C8EF8;
+  line-height: 42rpx;
+}
+.yk-list .mbox{
+  width: calc(100% - 252rpx);
+  padding-left: 46rpx;
+  border-left: 1rpx solid rgba(151, 151, 151, 0.3);
+}
+.yk-list .mbox .title{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6C6F74;
+  line-height: 40rpx;
+}
+.yk-list .mbox .sub-tit{
+  font-size: 40rpx;
+  font-family: Roboto-Bold, Roboto;
+  font-weight: bold;
+  color: #2A2C2F;
+  line-height: 1.2;
+}
+.yk-list .center{
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 40rpx;
+  color: #666;
+}
+
+.con{margin-top:40rpx;}
+.con .top{
+  width: 702rpx;
+  height: 98rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  
+  font-size: 28rpx;
+  color: #2A2C2F;
+  padding:0 30rpx;
+  box-sizing: border-box;
+  border-bottom:1px solid #DAE0E5;
+}
+.con .top .col666{color:#666;}
+.con .icon_down{
+  width:16rpx;
+  height:28rpx;
+  margin-left:13rpx;
+}
+.con{
+  width: 702rpx;
+  
+}
+.con .ul-out{
+  background: #FFFFFF; 
+  border-radius: 20rpx;
+  padding:44rpx 40rpx 44rpx 53rpx;
+  box-sizing: border-box;
+}
+.con .ul{
+  border-left:1px solid #DAE0E5;
+}
+.ul .li{
+  margin-bottom:35rpx;
+  padding-left:44rpx;
+  position:relative;
+}
+.icon{
+  width:30rpx;
+  height:30rpx;
+  position:absolute;
+  left:-15rpx;
+  top:5rpx;
+}
+.loc{
+  font-size: 36rpx;
+  color: #2A2C2F;
+}
+.name,.time{
+  font-size: 28rpx;
+  color: #93979D;
+  line-height:40rpx;
+}
+.status{
+  font-size: 28rpx;
+  color: #4C8EF8;
+  line-height:40rpx;
+}
+
+.nodata{text-align: center;}

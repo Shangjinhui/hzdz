@@ -1,0 +1,67 @@
+.res{
+  min-height:100vh;
+  background-color: rgba(0,0,0,0.65);
+  position: relative;
+  box-sizing: border-box;
+}
+.res .mian{
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;
+  background-color: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+.res .mian .title{
+  line-break: 48rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #333333;
+  line-height: 42rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+  margin-bottom: 24rpx;
+}
+.res .mian .title .image{
+  display: block;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+.res .mian .title  text{
+  display: inline-block
+}
+.res .mian .sub-tit{
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #333333;
+  line-height: 50rpx;
+  margin-bottom: 40rpx;
+}
+.res .mian .btn .colse{
+  width: 339rpx;
+  height: 98rpx;
+  line-height: 94rpx;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  border: 2rpx solid #E5E5E5;
+  text-align: center;
+  font-size: 36rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.res .mian .btn button{
+  width: 339rpx;
+  height: 98rpx;
+  line-height: 94rpx;
+  background: #1677FF;
+  border-radius: 8rpx;
+  float: right;
+} 

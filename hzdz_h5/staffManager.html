@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>员工管理</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/staffManager.css">
+    <script src="./assets/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="contain">
+            <div class="con">
+                <div class="top flex">管理员({{admin.length}})</div>
+                <ul>
+                    <li class="flex" v-for="(item,index) in admin" :key="index">
+                        <img class="avatar" src="./assets/images/admin.png" alt="">
+                        <p class="name ellipsis2">{{item.name}}</p>
+                        <p class="phone">{{item.jobNumber}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="con">
+                <div class="top flex">员工({{total}})</div>
+                <ul>
+                    <li class="flex-sp" v-for="(item,index) in staff" :key="index" @click="toList(item.id)">
+                        <div class="flex">
+                            <img class="avatar" src="./assets/images/staff.png" alt="">
+                            <p class="name ellipsis2">{{item.name}}</p>
+                            <p class="phone">{{item.jobNumber}}</p>
+                        </div>
+                        <image class="icon_down" mode="scaleToFill" src="./assets/images/yk-img13.png"/>
+                    </li>
+                </ul>
+                <div class="load">{{load}}</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script>
+    let vue = new Vue({
+        el:"#app",
+        data(){
+            return {
+                load:'加载中...',     //没有更多数据了~
+                loadF:true,          //阻止多次触发
+                admin:[],
+                staff:[],
+                pageNo:1,            //针对员工进行了分页
+                limit:20,
+                total:0,             //员工总数
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.initScroll();
+            this.getAdmin();
+            this.getStaff();
+        },
+        methods:{
+            initScroll(){
+                window.onscroll = e => {
+                    let a_h = document.documentElement.offsetHeight,
+                    s_t = document.documentElement.scrollTop,
+                    s_h = document.documentElement.clientHeight;
+                    //console.log(s_h,s_t,a_h)
+                    if(s_h+s_t > a_h-40){
+                        if(this.loadF){
+                            this.loadF = false;
+                            this.pageNo += 1;
+                            //console.log('加载数据');
+                            this.getStaff();                         
+                        }
+                        
+                    }
+                }
+            },
+            getAdmin(){
+                $.ajax({
+                    url:api+'statistics/manager_list',
+                    type:'get',
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.admin = res.data.list;
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            getStaff(){
+                let data = {
+                    pageNo:this.pageNo,
+                    limit:this.limit,
+                }
+                $.ajax({
+                    url:api+'statistics/worker_list',
+                    type:'get',
+                    data
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.total = res.data.count;
+                        if((this.pageNo-1)*this.limit+res.data.list.length>=res.data.count){
+                            this.load = '没有更多数据了~';
+                            this.loadF = false;
+                        }else{
+                            this.load = '加载中...';
+                            this.loadF = true;
+                        }
+                        let staff = this.staff;
+                        staff.push(...res.data.list)
+                        this.staff = [...staff];
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            toList(id){
+                location.href = 'recode.html?id='+id+'&type=2';
+            }
+        }
+    })
+</script>
+</html>

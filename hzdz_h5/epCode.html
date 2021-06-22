@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>消杀码</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/epCode.css">
+    <script src="./assets/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="res">
+            <div class="mian">
+                <div class="box-time">
+                    <div class="time">{{nowTime.month}}月{{nowTime.day}}日</div>
+                    <div class="new-time">{{nowTime.hour}}:{{nowTime.minute}}:{{nowTime.second}}</div>
+                    <div class="l-circle"></div>
+                    <div class="r-circle"></div>
+                </div>
+                <div class="centent">
+                    <div class="wid-margin">
+                        <img v-if="detail.type==0" class="image" src="./assets/images/blue.png" alt="">
+                        <img v-else-if="detail.type==1" class="image" src="./assets/images/yellow.png" alt="">
+                        <img v-else-if="detail.type==2" class="image" src="./assets/images/red.png" alt="">
+                        <div class="title">杭州东站消杀码.{{detail.title}}</div>
+                        <div>
+                            <div class="sub-tit2 b">
+                                <div>上一次消杀时间 {{lastTime.month}}月{{lastTime.day}}日，{{lastTime.hour}}:{{lastTime.minute}}:{{lastTime.second}}</div>
+                                <div>
+                                    距离上次消杀已过去<span class="colff551d">{{disTime.hour}}</span>小时<span class="colff551d">{{disTime.minute}}</span>分钟<span
+                                        class="colff551d">{{disTime.second}}</span>秒
+                                </div>
+                            </div>
+                            <div class="sub-tit b">
+                                药水配方:{{detail.potion}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top flex-sp">
+                <div>
+                    显示近10条消杀记录
+                </div>
+                <div class="col666 flex" @click="lookAll">
+                    查看全部 <image class="icon_down" mode="scaleToFill" src="./assets/images/yk-img13.png"/>
+                </div>
+            </div>
+            <div class="nodata" v-if="list.length==0">
+                暂无数据哦~
+            </div>
+            <div class="con">
+                <ul class="ul">
+                    <li class="li" v-for="(item,index) in list" :key="index" @click="toDetail(item.id)">
+                        <image class="icon" mode="scaleToFill" src="./assets/images/success.png"/>
+                        <div class="flex-sp-btm">
+                            <div class="loc">{{item.area}}</div>
+                            <div class="name">{{item.name}}</div>
+                        </div>
+                        <div class="flex-sp">
+                            <div class="time">{{item.createTime}}</div>
+                            <div class="status">已消杀</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script>
+    //获取参数
+    let id = location.href.split('id=')[1].split('&')[0];
+    //console.log(id);
+    let vue = new Vue({
+        el: "#app",
+        data() {
+            return {
+                id,
+                detail:{},
+                list:[],
+                nowTime:{
+                    month:'',
+                    day:'',
+                    hour:'',
+                    minute:'',
+                    second:''
+                },
+                lastTime:{
+                    month:'',
+                    day:'',
+                    hour:'',
+                    minute:'',
+                    second:''
+                },
+                disTime:{
+                    hour:'',
+                    minute:'',
+                    second:''
+                }
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.getData();
+            // this.initNowTime();
+            // setInterval(() => {
+            //     this.initNowTime();
+            // }, 1000);
+        },
+        methods:{
+            initNowTime(){
+                let date = new Date(),nowTime = this.nowTime;
+                nowTime.month = date.getMonth()+1;
+                nowTime.day = date.getDate();
+                nowTime.hour = global.addZero(date.getHours());
+                nowTime.minute = global.addZero(date.getMinutes());
+                nowTime.second = global.addZero(date.getSeconds());
+                this.nowTime = {...nowTime};
+            },
+            lookAll(){
+                location.href = 'recode.html?id='+this.id+'&type=1';
+            },
+            getData(){
+                $.ajax({
+                    url:api+'statistics/code_info',
+                    type:'get',
+                    data:{id:this.id}
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        this.detail = res.data.info;
+                        this.list = res.data.list;
+                        //
+                        this.initNowTime();
+                        this.initLastTime();
+                        this.initDisTime();
+                        setInterval(() => {
+                            this.initNowTime();
+                            this.initDisTime();
+                        }, 1000);
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            initLastTime(){
+                let date = new Date(this.list[0].startTime*1000),lastTime = this.lastTime;
+                lastTime.month = date.getMonth()+1;
+                lastTime.day = date.getDate();
+                lastTime.hour = global.addZero(date.getHours());
+                lastTime.minute = global.addZero(date.getMinutes());
+                lastTime.second = global.addZero(date.getSeconds());
+                this.lastTime = {...lastTime};
+            },
+            initDisTime(){
+                let last = this.list[0].startTime*1000,now = new Date().getTime(),disTime = this.disTime;
+                let dis = now-last;
+                disTime.hour = global.addZero(parseInt(dis/1000/60/60));
+                disTime.minute = global.addZero(parseInt(dis%(1000*60*60)/1000/60));
+                disTime.second = global.addZero(parseInt(dis%(1000*60)/1000));
+                this.disTime = {...disTime};
+            },
+            toDetail(id){
+                location.href = 'recodeDetail.html?id='+id;
+            }
+        }
+    })
+</script>
+
+</html>

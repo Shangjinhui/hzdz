@@ -1,0 +1,32 @@
+page{
+  background-color: #F0F4F7;
+}
+.mian{
+  padding: 63rpx 24rpx 0;
+}
+.mian textarea{
+  display: block;
+  width: 100%;
+  padding: 38rpx 24rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #868B92;
+  line-height: 45rpx;
+  height: 483rpx;
+}
+.submit{
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  background: #4C8EF8;
+  border-radius: 8rpx;
+  margin-top: 60rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>反馈建议</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/feedback.css">
+    <script src="./assets/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="contain">
+            <div class="top flex-sp">
+                <div @click="getAll">
+                    全部
+                </div>
+                <div class="col666 flex rel">
+                    筛选 <image class="icon_down" mode="scaleToFill" src="./assets/images/yk-img13.png"/>
+                    <input type="text" id="date_picker" readonly>
+                </div>
+            </div>
+            <ul class="list">
+                <li v-for="(item,index) in list" :key="index">
+                    <p class="li-top flex">
+                        提交时间：{{item.createTime}}
+                    </p>
+                    <p class="li-con">
+                        {{item.content}}
+                    </p>
+                </li>
+            </ul>
+            <div class="load">{{load}}</div>
+        </div>
+        
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script src="./assets/js/laydate/laydate.js"></script>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data() {
+            return {
+                load:'加载中...',     //没有更多数据了~
+                loadF:true,          //阻止多次触发
+                list:[],
+                pageNo:1,
+                limit:20,
+                search:'',
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.initLaydate();
+            this.initScroll();
+            this.getData();
+        },
+        methods:{
+            getData(){
+                let data = {
+                    pageNo:this.pageNo,
+                    limit:this.limit,
+                    search:this.search
+                }
+                $.ajax({
+                    url:api+'statistics/feedback_list',
+                    type:'get',
+                    data
+                }).then(res=>{
+                    //console.log(res);
+                    if(res.returnCode=='0000'){
+                        if((this.pageNo-1)*this.limit+res.data.list.length>=res.data.count){
+                            this.load = '没有更多数据了~';
+                            this.loadF = false;
+                        }else{
+                            this.load = '加载中...';
+                            this.loadF = true;
+                        }
+                        let list = this.list;
+                        list.push(...res.data.list)
+                        this.list = [...list];
+                    }else{
+                        alert(res.msg);
+                    }
+                })
+            },
+            initLaydate(){
+                laydate.render({
+                    elem: '#date_picker',
+                    max:0,
+                    done:(val,date)=>{
+                        //console.log(val,date);
+                        this.search = val;
+                        this.pageNo = 1;
+                        this.list = [];
+                        this.load = '加载中...';
+                        this.getData();
+                    }
+                });
+            },
+            initScroll(){
+                
+                window.onscroll = e => {
+                    let a_h = document.documentElement.offsetHeight,
+                    s_t = document.documentElement.scrollTop,
+                    s_h = document.documentElement.clientHeight;
+                    //console.log(s_h,s_t,a_h)
+                    if(s_h+s_t > a_h-40){
+                        if(this.loadF){
+                            this.loadF = false;
+                            this.pageNo += 1;
+                            //console.log('加载数据');
+                            this.getData(); 
+                            
+                        }
+                        
+                    }
+                }
+            },
+            getAll(){
+                this.search = '';
+                this.pageNo = 1;
+                this.list = [];
+                this.load = '加载中...';
+                this.getData();
+            },
+        }
+    })
+</script>
+
+</html>

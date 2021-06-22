@@ -1,0 +1,37 @@
+.res .scroll{
+  background-color: #F0F4F7;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+.scroll .box{
+  width: 697rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin: 33rpx auto 0;
+}
+.scroll .box .time{
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6C6F74;
+  padding: 0 44rpx;
+  border-bottom: 2rpx solid #DAE0E5;
+}
+.scroll .box .detaile{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  padding: 19rpx 45rpx 67rpx 48rpx;
+}
+.tip{
+  text-align: center;
+  font-size: 30rpx;
+  color: #666;
+  line-break: 40rpx;
+  padding: 150rpx 0 0;
+}

@@ -1,0 +1,30 @@
+<view class="contain">
+  <view class="top flex-sp">
+    <view onTap="getAll">
+      全部
+    </view>
+    <view onTap="datePicker">
+      筛选<image class="icon_down" mode="scaleToFill" src="../../assets/images/icon_down.png"/>
+    </view>
+  </view>
+  <scroll-view class="scroll" scroll-y="{{true}}" onScrollToLower="lower">
+  <view class="con">
+    <view class="nodata" a:if="{{list.length<=0}}">
+      暂无数据哦~
+    </view>
+    <view class="ul">
+        <view class="li" a:for="{{list}}">
+          <image class="icon" mode="scaleToFill" src="../../assets/images/success.png"/>
+          <view class="flex-sp-btm">
+            <view class="loc">{{item.area}}</view>
+            <view class="name">{{item.name}}</view>
+          </view>
+          <view class="flex-sp">
+            <view class="time">{{item.createTime}}</view>
+            <view class="status">已消杀</view>
+          </view>
+        </view>
+      </view>
+  </view>
+  </scroll-view>
+</view>

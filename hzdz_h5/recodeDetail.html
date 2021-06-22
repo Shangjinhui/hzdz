@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>消杀详情</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/recodeDetail.css">
+    <script src="./assets/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="contain">
+            <div class="top">
+                <img class="logo" mode="scaleToFill" src="./assets/images/img2.png"/>
+                <div class="title">
+                  {{detail.area}}，已完成消杀
+                </div>
+              </div>
+              <div class="con">
+                <div class="formula flex-top">
+                  <div class="l">药水配方:</div>
+                  <div class="r flex-son">{{detail.potion}}</div>
+                </div>
+                <div class="ul flex-top">
+                  <div class="l mr25">消杀人员:</div>
+                  <div class="r flex-son">{{detail.name}}</div>
+                </div>
+                <div class="ul flex-top">
+                  <div class="l mr25">手机号:</div>
+                  <div class="r flex-son">{{detail.jobNumber}}</div>
+                </div>
+                <div class="ul flex-top">
+                  <div class="l mr25">消杀时间:</div>
+                  <div class="r flex-son">{{detail.createTime}}</div>
+                </div>
+              </div>
+        </div>
+    </div>
+</body>
+<script src="./assets/until.js"></script>
+<script src="./assets/jquery.min.js"></script>
+<script>
+    let id = location.href.split('id=')[1]?location.href.split('id=')[1].split('&')[0]:'';
+    let vue = new Vue({
+        el: "#app",
+        data() {
+            return {
+              id,
+              detail:{},
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        mounted(){
+            this.getData();
+        },
+        methods:{
+          getData(){
+            let data = {
+                id:this.id
+            }
+            $.ajax({
+                url:api+'statistics/kill_info',
+                type:'get',
+                data
+            }).then(res=>{
+                //console.log(res);
+                if(res.returnCode=='0000'){
+                    this.detail = res.data.info;
+                }else{
+                    alert(res.msg);
+                }
+            })
+          },
+        }
+    })
+</script>
+
+</html>

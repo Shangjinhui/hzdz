@@ -1,0 +1,66 @@
+.contain{
+    width:7.5rem;
+    min-height:100vh;
+    background:#F0F4F7;
+}
+.top{
+    width:7.5rem;
+    height:4.56rem;
+    padding-top:.54rem;
+    box-sizing: border-box;
+    background:#4C8EF8;
+    border-bottom-left-radius: .50rem;
+    border-bottom-right-radius: .50rem;
+  }
+  .top .logo{
+    width:1.37rem;
+    height:1.29rem;
+    display: block;
+    margin:0 auto;
+  }
+  .top .title{
+    font-size: .32rem;
+    color: #FFFFFF;
+    line-height: .45rem;
+    text-align: center;
+    margin-top:.16rem;
+  }
+  
+  .con{
+    width: 6.97rem;
+    min-height: 4.79rem;
+    background: #FFFFFF;
+    border-radius: .20rem;
+    margin:-1.60rem auto 0;
+  
+    padding:.43rem .36rem;
+    box-sizing: border-box;
+  }
+  .formula{
+    width: 100%;
+    height: 1.34rem;
+    background: #edf4fe;
+    border-radius: .20rem;
+    padding:.27rem .25rem;
+    box-sizing: border-box;
+    margin-bottom:.40rem;
+  }
+  .con .l{
+    width:1.40rem;
+    text-align: justify;
+    text-align-last: justify;
+    font-size: .28rem;
+    color: #2A2C2F;
+    line-height: .40rem;
+    margin-right:0.08rem;
+  }
+  .con .mr25{margin-right:.25rem;}
+  .con .r{
+    font-size: .28rem;
+    color: #2A2C2F;
+    line-height: .40rem;
+    font-weight:bold;
+  }
+  .con .ul{
+    margin-bottom:.30rem;
+  }

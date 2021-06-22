@@ -1,0 +1,66 @@
+.contain{
+  width:750rpx;
+  min-height:100vh;
+  background:#F0F4F7;
+  padding:28rpx 24rpx;
+  box-sizing: border-box;
+}
+.top{
+  width: 702rpx;
+  height: 98rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  
+  font-size: 28rpx;
+  color: #2A2C2F;
+  padding:0 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 1px;
+}
+.icon_down{
+  width:18rpx;
+  height:12rpx;
+  margin-left:17rpx;
+}
+
+.scroll{
+  height:calc(100vh - 158rpx);
+}
+
+.con{
+  width: 702rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding:44rpx 40rpx 44rpx 53rpx;
+  box-sizing: border-box;
+}
+.con .ul{
+  border-left:1px solid #DAE0E5;
+}
+.ul .li{
+  margin-bottom:35rpx;
+  padding-left:44rpx;
+  position:relative;
+}
+.icon{
+  width:30rpx;
+  height:30rpx;
+  position:absolute;
+  left:-15rpx;
+  top:5rpx;
+}
+.loc{
+  font-size: 36rpx;
+  color: #2A2C2F;
+}
+.name,.time{
+  font-size: 28rpx;
+  color: #93979D;
+  line-height:40rpx;
+}
+.status{
+  font-size: 28rpx;
+  color: #4C8EF8;
+  line-height:40rpx;
+}
+.nodata{text-align: center;}

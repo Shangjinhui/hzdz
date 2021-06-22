@@ -1,0 +1,70 @@
+#app{
+    width:7.5rem;
+    min-height:100vh;
+    background:#F0F4F7;
+}
+.top{
+    width: 7.5rem;
+    height: .84rem;
+    background: #fff;
+    padding:0 .24rem; 
+    
+    font-size: .34rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #93979D;
+}
+.top .icon{
+    width:.44rem;
+}
+.top .connect{
+    padding:0 .28rem;
+}
+.top #beginTime,.top #endTime{
+position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.refresh{
+    font-size: .28rem;
+    color: #2A2C2F;
+    text-align: center;
+}
+.contain{
+    width:6.97rem;
+    background:#fff;
+    margin:.27rem auto 0;
+    border-radius: .2rem;
+    padding:0 .32rem;
+}
+.contain ul li{
+    width:45%;
+    height:2.59rem;
+}
+.contain ul li img{
+    width:.89rem;
+    margin-right:.3rem;
+}
+.num{
+    font-size: .32rem;
+    font-family: PingFangSC-Medium, PingFang SC;
+    color: #2A2C2F;
+    line-height: .67rem;
+}
+.num span{
+    font-size:.48rem;
+}
+.tip{
+    
+    font-size: .28rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #6C6F74;
+    line-height: .4rem;
+}
+.contain ul .line{
+    width:100%;
+    height:2px;
+    background:#DAE0E5;
+}

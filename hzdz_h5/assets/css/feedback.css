@@ -1,0 +1,60 @@
+.contain{
+    width:7.5rem;
+    min-height:100vh;
+    background:#F0F4F7;
+    padding:.3rem .24rem;
+}
+.nodata{font-size: .28rem;text-align: center;}
+  .top{
+    width: 7.02rem;
+    height: .98rem;
+    background: #FFFFFF;
+    border-radius: .2rem;
+    
+    font-size: .28rem;
+    color: #2A2C2F;
+    padding:0 .3rem;
+    box-sizing: border-box;
+    margin-bottom:1px;
+  }
+ .top .col666{color:#666;}
+ #date_picker{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+ }
+ .icon_down{
+    width:.16rem;
+    height:.28rem;
+    margin-left:.13rem;
+  }
+
+  .list li{
+    width: 6.97rem;
+    height: 2.77rem;
+    background: #FFFFFF;
+    border-radius: .2rem;
+    margin-bottom:.3rem;
+  }
+
+  .li-top{
+      height:1.1rem;
+      padding:0 .44rem;
+      
+    font-size: .28rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #6C6F74;
+    border-bottom:1px solid #DAE0E5;
+  }
+  .li-con{
+      min-height:1.66rem;
+      padding:.19rem .44rem;
+    
+    font-size: .28rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #2A2C2F;
+    line-height: .4rem;
+  }

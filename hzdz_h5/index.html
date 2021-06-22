@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>东站防疫平台</title>
+    <link rel="stylesheet" href="./assets/public.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <script src="./assets/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="contain">
+            <div class="top" v-for="(item,index) in list" :key="index">
+                <p class="title">{{item.title}}</p>
+                <ul class="flex flex-wrap">
+                    <li v-for="(item2,index2) in item.list" :key="index2" @click="toLink(item2.url)">
+                        <div class="img">
+                            <img :src="item2.img" alt="">
+                        </div>
+                        <p>{{item2.title}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src='https://wpk-gate.zjzwfw.gov.cn/static/wpk-jssdk.1.0.2/wpkReporter.js' crossorigin='true'></script>
+<script src="./assets/stability.js"></script>
+<script src="./assets/flow.js"></script>
+<script>
+    let vue = new Vue({
+        el:"#app",
+        data(){
+            return {
+                list:[
+                    {
+                        title:'防疫监管',
+                        list:[
+                            {
+                                img:'./assets/images/address.png',
+                                title:'消杀地点管控',
+                                url:'address.html',
+                            },
+                            {
+                                img:'./assets/images/self.png',
+                                title:'员工管理',
+                                url:'staffManager.html',
+                            }
+                        ]
+                    },
+                    {
+                        title:'数据面板',
+                        list:[
+                            {
+                                img:'./assets/images/data.png',
+                                title:'消杀数据总览',
+                                url:'dataScreen.html',
+                            }
+                        ]
+                    },
+                    {
+                        title:'反馈意见',
+                        list:[
+                            {
+                                img:'./assets/images/mess.png',
+                                title:'反馈建议',
+                                url:'feedback.html',
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        beforeCreate(){
+            document.querySelector('#app').style.display = 'block';
+        },
+        methods:{
+            toLink(url){
+                location.href = url;
+            }
+        }
+    })
+</script>
+</html>

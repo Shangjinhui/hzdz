@@ -1,0 +1,6 @@
+<view class="res">
+    <view class="mian">
+      <textarea focus="{{focus}}" maxlength="200" placeholder="请输入您对我们的宝贵意见和建议。" value="{{content}}"  onInput="putCon" />
+      <view class="submit" onTap="submit">提    交</view>
+    </view>
+</view>

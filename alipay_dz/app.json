@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/yk_code/yk_code",
+    "pages/scan_code/scan_code",
+    "pages/center/center",
+    "pages/feedback/feedback",
+    "pages/staff_index/staff_index",
+    "pages/admin_location/admin_location",
+    "pages/admin_recond/admin_recond",
+    "pages/staff_login/staff_login",
+    "pages/staff_recond_detail/staff_recond_detail",
+    "pages/staff_record/staff_record",
+    "pages/feedback_list/feedback_list"
+  ],
+  "window": {
+    "defaultTitle": "东站防疫"
+  }
+}

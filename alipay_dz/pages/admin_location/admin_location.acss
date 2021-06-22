@@ -1,0 +1,30 @@
+.contain{
+  width:750rpx;
+  height:100vh;
+  background:#F0F4F7;
+}
+.ul{
+  padding:25rpx;
+}
+.li{
+  background:#fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom:24rpx;
+}
+.li .status{
+  width:339rpx;
+  height:339rpx;
+}
+.li .title{
+  font-size: 30rpx;
+  text-align: center;
+  color: #2A2C2F;
+  line-height: 90rpx;
+  margin-top:10rpx;
+}
+
+.nodata{
+  padding:20rpx 0;
+  text-align: center;
+}

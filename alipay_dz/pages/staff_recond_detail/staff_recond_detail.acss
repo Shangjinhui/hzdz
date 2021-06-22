@@ -1,0 +1,64 @@
+.contain{
+  width:750rpx;
+  min-height:100vh;
+  background:#F0F4F7;
+}
+.top{
+  width:750rpx;
+  height:456rpx;
+  padding-top:54rpx;
+  box-sizing: border-box;
+  background:#4C8EF8;
+  border-bottom-left-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+}
+.top .logo{
+  width:137rpx;
+  height:129rpx;
+  display: block;
+  margin:0 auto;
+}
+.top .title{
+  font-size: 32rpx;
+  color: #FFFFFF;
+  line-height: 45rpx;
+  text-align: center;
+  margin-top:16rpx;
+}
+
+.con{
+  width: 697rpx;
+  min-height: 479rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin:-160rpx auto 0;
+
+  padding:43rpx 36rpx;
+  box-sizing: border-box;
+}
+.formula{
+  width: 100%;
+  height: 134rpx;
+  background: #edf4fe;
+  border-radius: 20rpx;
+  padding:27rpx 25rpx;
+  box-sizing: border-box;
+  margin-bottom:40rpx;
+}
+.con .l{
+  width:140rpx;
+  text-align: justify;
+  font-size: 28rpx;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  margin-right:8rpx;
+}
+.con .r{
+  font-size: 28rpx;
+  color: #2A2C2F;
+  line-height: 40rpx;
+  font-weight:bold;
+}
+.con .ul{
+  margin-bottom:30rpx;
+}
